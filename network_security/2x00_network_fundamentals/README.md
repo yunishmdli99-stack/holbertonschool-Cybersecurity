@@ -1,0 +1,1 @@
+Gorum anam neyleyir
