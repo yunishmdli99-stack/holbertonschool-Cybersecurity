@@ -1,5 +1,3 @@
 #!/bin/bash
-echo "$1" | tr '.' '\n' | while read octet; do
-    printf '%08d' "$(echo "obase=2; $octet" | bc)"
-done | sed 's/.\{8\}/&./g;s/\.$/\n/'
-
+IFS='.' read -r a b c d <<< "$1"
+printf '%08d.%08d.%08d.%08d\n' $(echo "obase=2;$a" | bc) $(echo "obase=2;$b" | bc) $(echo "obase=2;$c" | bc) $(echo "obase=2;$d" | bc)
