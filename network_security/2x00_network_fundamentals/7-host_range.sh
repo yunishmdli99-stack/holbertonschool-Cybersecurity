@@ -1,0 +1,2 @@
+#!/bin/bash
+IFS='.' read -r a b c d <<< "$1"; mask=$(( 0xFFFFFFFF << (32-$2) & 0xFFFFFFFF )); net=$(( ($a<<24|$b<<16|$c<<8|$d) & mask )); printf "%d.%d.%d.%d - %d.%d.%d.%d" "$(($net>>24&255))" "$(($net>>16&255))" "$(($net>>8&255))" "$(( ($net&255)+1 ))" "$(( ($net|~mask&0xFFFFFFFF)>>24&255 ))" "$(( ($net|~mask&0xFFFFFFFF)>>16&255 ))" "$(( ($net|~mask&0xFFFFFFFF)>>8&255 ))" "$(( ($net|~mask&0xFFFFFFFF)&255-1 ))"
