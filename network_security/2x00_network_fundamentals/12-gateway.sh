@@ -1,2 +1,2 @@
 #!/bin/bash
-netstat -rn | grep -E '^0\.0\.0\.0' | awk '{print $2}'
+ip route show default | grep default | awk '{print $3}'
