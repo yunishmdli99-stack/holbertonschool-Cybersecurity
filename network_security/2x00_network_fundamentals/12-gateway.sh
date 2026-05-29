@@ -1,2 +1,2 @@
 #!/bin/bash
-ip route show default | grep -oP '(?<=via )\d+\.\d+\.\d+\.\d+'
+netstat -rn | grep -E '^0\.0\.0\.0' | awk '{print $2}'
